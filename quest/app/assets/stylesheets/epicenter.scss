@@ -1,0 +1,66 @@
+// Place all the styles related to the Epicenter controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Feed CSS
+
+html,body {
+	height: 100%;
+}
+
+#container{
+	padding: 0;
+	height: 100%;
+}
+
+.row{
+	margin: 0;
+	padding-right: 0;
+	position: relative;
+}
+
+sidebar{
+	height: 100%;
+	background: #88D0AD;
+	position: fixed;
+}
+//Profile_Section
+.profileSection{
+	height: 100vh;
+	background: #e6ecef;
+	padding: 0;
+}
+
+.profile{
+	margin-top: 10px;
+	background-color: #white;
+	border: 2px solid blue;
+}
+
+
+//News_Feed_Section
+.feed{
+	background-color: #e6ecef;
+	padding-right: 0;
+}
+
+.feedBox{ 
+	padding: 20px;
+	background: white;
+	border: 2px solid #e6ecef;
+}
+
+.name{
+	color: lavender;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.name:visited{
+	color: lavender;
+}
+
+//Used to determine the css layout.
+.box{
+	borde: 2px solid red;
+}
