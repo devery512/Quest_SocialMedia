@@ -1,9 +1,12 @@
 <div class="row container-fluid" id="container">
 	<div class="col-md-3 col-sm-6 box profileSection">
 		<div>
-			<div class="profile">
-				<h1>@<%= current_user.username %>'s circle</h1>
-				<p>User's profile will go here.</p>
+			<div class="profile well">
+				<img src=<%= current_user.avatar.url %> class="img-circle img-responsive" style="display: block; padding: 10px;"> 
+				<h4>@<%= current_user.username %>'s circle</h4>
+		
+				<p><%= link_to 'My Profile', show_user_path(id: current_user.id)%></p>
+
 			</div>
 		</div>
 	</div>
@@ -11,15 +14,14 @@
 	<div class="col-md-9 col-sm-6 box feed">
 		<div>
 			<h3>Here is what your friends are talking about:</h3>
-			<% @following_tweets.each do |tweet| %>
+			<% @following_tweets.reverse.each do |tweet| %>
 			<div class="feedBox">
 				<p><span class="name"><%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %></span> @<%= tweet.user.username %>
 					&#8226; <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %>
 							<%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at > 86400 %>
 				</p>
 				<p><%= tweet.message.html_safe %></p>
-				<br>
-				<hr>
+				
 			</div>
 			<% end %>
 		</div>
