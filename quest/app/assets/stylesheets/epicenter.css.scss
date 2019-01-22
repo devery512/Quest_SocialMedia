@@ -60,7 +60,21 @@ sidebar{
 	color: lavender;
 }
 
+//Show_User CSS
+.content{
+	margin-left: 40px;
+}
+
 //Used to determine the css layout.
 .box{
-	borde: 2px solid red;
+	border: 2px solid red;
+}
+
+.box2{
+	border: 1px solid green;
+}
+
+
+#box3{
+	border: 2px solid blue;
 }

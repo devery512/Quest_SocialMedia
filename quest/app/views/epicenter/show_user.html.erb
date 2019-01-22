@@ -1,10 +1,10 @@
-<h1>@<%= @user.username %>'s Profile & Tweets</h1>
+<h1><%= @user.username %>'s Profile</h1>
 
 
 
-<div class="col-sm-3 well">
+<div class="col-sm-3 box well">
     <div class="well">
-        <img src=<%= @user.avatar.url %> class="img-circle img-responsive" style="display: inline; padding: 10px">
+        <img src=<%= @user.avatar.url %> class="img-rounded img-responsive" style="display: inline; padding: 10px">
         
         <div style="display: inline; margin: 10px">
             <p><%= @user.name %></p>
@@ -22,40 +22,38 @@
             </p>
             
             <div class="well">
-                <p class="text=left">
-                    <%= link_to following_path(id: @user.id) do %>
-                </p>
-                    <p>Following</p>
-                    <p><%= @user.following.length %></p>
+                <div>
+                   <p class="text-left"><%= link_to following_path(id: @user.id) do %></p>
+                    <p><%= @user.following.length%> Following </p>
                 <% end %>
-                <p class="text=right">
-                    <%= link_to followers_path(id: @user.id) do%>
-                </p>
-                    <p>Followers</p>
-                    <p><%= @user.followers.length%></p>
-                <% end %>
+                <p class="text-right"><%= link_to followers_path(id: @user.id) do%></p>
+                    <p><%= @user.followers.length%> Followers</p>
+                <% end %> 
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-sm-7">
+<div class="col-sm-7 content">
     <div class="row">
-        <% @user.tweets.reverse.each do |tweet| %>
-        <div class="col-sm-12 well">
-            <div class="col-sm-3">
-                <div class="well">
-                    <p>@<%= @user.username %></p>
-                    <img src="<%= @user.avatar %>" class="img-circle img-responsive" style="display: inline; padding: 5px">
+        <div class="col-md-12 col-sm-6 feed">
+            <div>
+                <% @user.tweets.reverse.each do |tweet| %>
+                <div class="feedBox">
+                    <p>
+                        <%= image_tag tweet.user.avatar.url, size:40, class: "image-responive img-circle" %>
+                        <span class="name">
+                            <%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %></span> @<%= tweet.user.username %>
+                        &#8226; <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %>
+                                <%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at > 86400 %>
+                    </p>
+                    <p><%= tweet.message.html_safe %></p>
                 </div>
+                <% end %>
             </div>
-            <div class="col-sm-9">
-                <div class="well">
-                   <p class="text-left"><%= tweet.message.html_safe %></p>
-                </div>
-           </div>
         </div>
-        <% end %>
     </div>
 </div>
 

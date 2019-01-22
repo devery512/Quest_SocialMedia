@@ -1,6 +1,6 @@
-<h1>Editing Tweet</h1>
+<div class="container">
+	<h1>Editing Tweet</h1>
+	<%= render 'form', tweet: @tweet %>
 
-<%= render 'form', tweet: @tweet %>
-
-<%= link_to 'Show', @tweet %> |
-<%= link_to 'Back', tweets_path %>
+	<h4 class="btn"><%= link_to 'Show', @tweet %> | <%= link_to 'Back', tweets_path %></h4>
+</div>
